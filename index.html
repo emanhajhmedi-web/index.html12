@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz Game</title>
+
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: radial-gradient(circle, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding-top: 100px;
+    }
+
+    h1 {
+      font-size: 42px;
+      text-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 15px;
+      font-size: 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: white;
+      background: #111;
+      box-shadow: 0 0 10px #00e5ff, inset 0 0 10px #00e5ff;
+    }
+
+    button:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 20px #00e5ff, 0 0 40px #00e5ff;
+    }
+
+    .correct {
+      background: #00c853;
+      box-shadow: 0 0 20px #00ff6a;
+    }
+
+    .wrong {
+      background: #d50000;
+      box-shadow: 0 0 20px #ff1744;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<h1>Question: 2 + 2 = ?</h1>
+
+<button id="btn1" onclick="check(this, 3)">3</button>
+<button id="btn2" onclick="check(this, 4)">4</button>
+
+<!-- أصوات -->
+<audio id="correctSound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+<audio id="wrongSound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-buzz-950.mp3"></audio>
+
+<script>
+function check(button, answer){
+  let correctSound = document.getElementById("correctSound");
+  let wrongSound = document.getElementById("wrongSound");
+
+  if(answer == 4){
+    button.classList.add("correct");
+    correctSound.play();
+  } else {
+    button.classList.add("wrong");
+    wrongSound.play();
+  }
+
+  // تعطيل الأزرار بعد الإجابة
+  document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+}
+</script>
+
+</body>
+</html>
